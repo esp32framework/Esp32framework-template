@@ -1,10 +1,10 @@
-fn main() {
-    // It is necessary to call this function once. Otherwise some patches to the runtime
-    // implemented by esp-idf-sys might not link properly. See https://github.com/esp-rs/esp-idf-template/issues/71
-    esp_idf_svc::sys::link_patches();
+use esp32framework::Microcontroller;
 
-    // Bind the log crate to the ESP Logging facilities
-    esp_idf_svc::log::EspLogger::initialize_default();
-
-    log::info!("Hello, world!");
+fn main(){
+    let mut micro = Microcontroller::take();
+    let mut timer_driver = micro.get_timer_driver().unwrap();
+    timer_driver.interrupt_after(3_000_000, || {println!("Hello World")});
+    timer_driver.enable().unwrap();
+    println!("WARNING, Hello World incoming...");
+    micro.wait_for_updates(None);
 }

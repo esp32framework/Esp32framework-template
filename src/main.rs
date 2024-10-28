@@ -1,3 +1,9 @@
+{%- if test -%}
+#![feature(custom_test_frameworks)]
+#![feature(test)]
+#![test_runner(test_runner_mod::esp_test_runner)]
+esp32framework::esp_test::use_esp32_tests!(esp32framework::esp_test);
+{%- endif %}
 use esp32framework::Microcontroller;
 
 fn main(){

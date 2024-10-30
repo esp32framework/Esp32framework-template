@@ -2,3 +2,6 @@
 type = "bool"
 prompt = "Would you like your project to start with esp32framework testing setup?"
 default = false
+
+[conditional.'!test']
+ignore = [ "test.sh" ]

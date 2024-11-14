@@ -14,3 +14,12 @@ fn main(){
     println!("WARNING, Hello World incoming...");
     micro.wait_for_updates(None);
 }
+{% if test %}
+#[cfg(test)]
+mod test{
+    #[test]
+    fn passing_test(){
+        assert!(true)
+    }
+}
+{% endif %}

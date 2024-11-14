@@ -29,3 +29,4 @@ esp32framework = {git = "https://github.com/esp32framework/esp32framework"}
 
 [build-dependencies]
 embuild = { version = "0.31.3", features = ["espidf"] }
+cc = "=1.1.31"
